@@ -1,8 +1,5 @@
 # csv-hilario
-Essa classe visa simplificar exportação de dados em arquivos CSVs da forma mais genérica possível
-
-
-Sobre
+<h3>Sobre</h3>
 Classe escrita em PHP que fornece a possibilidade de escrever arquivos de planilha CSV de uma forma muito fácil, basta passar os dados! 
 Por padrão basta passar os dados por array para poder fazer o download do arquivo. O array deve ser bidimensional como o exemplo abaixo:
 
@@ -13,7 +10,7 @@ $cars = array(
     array("Land Rover",17,15)
 );
 
-Característica da classe
+<h3>Característica da classe</h3>
 
 De fácil implementação
 Curva baixa de aprendizado
@@ -22,21 +19,21 @@ Defina as propriedades de escrita como nome do arquivo, header, output e delimit
 Requisitos
 Versão PHP 5.2.0 ou superior
 
-Simples exemplo
-Baixar do repositório
+<h3>Baixar do repositório</h3>
+
 $ git clone https://github.com/EvertonHilario/csv-hilario.git<br>
-Exemplo Básico para realizar download de um CSV
-<?php
-require ‘ExportCsv.php';
-$mail = new ExportCsv;
+Exemplo Básico para realizar download de um CSV<br>
+<?php<br>
+require ‘ExportCsv.php';<br>
+$mail = new ExportCsv;<br>
+<br><br>
+$data = array(<br>
+    array("Volvo","green",17),<br>
+    array("BMW","yelow",13),<br>
+    array("Saab","blue",07),<br>
+    array("Land Rover","red",15)<br>
+);<br><br>
 
-$data = array(
-    array("Volvo","green",17),
-    array("BMW","yelow",13),
-    array("Saab","blue",07),
-    array("Land Rover","red",15)
-);
-
-$header = array("nome", "cor", "ano");
-$filename = "test-file”;
+$header = array("nome", "cor", "ano");<br>
+$filename = "test-file”;<br>
 $csv->exportCsv($data, $header, $filename);
