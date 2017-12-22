@@ -24,7 +24,7 @@ Versão PHP 5.2.0 ou superior
 
 Simples exemplo
 Baixar do repositório
-$ git clone https://github.com/EvertonHilario/csv-hilario.git
+$ git clone https://github.com/EvertonHilario/csv-hilario.git<br>
 Exemplo Básico para realizar download de um CSV
 <?php
 require ‘ExportCsv.php';
