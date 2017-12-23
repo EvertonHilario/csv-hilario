@@ -48,9 +48,9 @@ class ExportCsv
     private $content = array();
 
     /** 
-    * variável que recebe o destino da saída do arquivo
+    * variável que recebe o tipo da saída do arquivo
     * @access private 
-    * @var array $content
+    * @var array $outputType
     * D = Download
     * S = Save
     */ 
@@ -59,7 +59,7 @@ class ExportCsv
     /** 
     * variável que recebe o destino da saída do arquivo
     * @access private 
-    * @var array $content
+    * @var array $output
     */ 
     private $output = "php://output";
 
