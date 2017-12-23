@@ -25,7 +25,6 @@ Basta passar os dados por um array bidimensional para poder fazer o download do 
 <p>$ git clone https://github.com/EvertonHilario/csv-hilario.git</p>
 <h3>Exemplo Básico para realizar download de um CSV</h3>
 <pre>
-<?php
 //dados com o conteúdo do arquivo
 $data = [
 	['teste1', 'teste2', 'teste3'],
