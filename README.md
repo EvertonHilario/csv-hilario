@@ -1,39 +1,47 @@
 # csv-hilario
 <h3>Sobre</h3>
-Classe escrita em PHP que fornece a possibilidade de escrever arquivos de planilha CSV de uma forma muito fácil, basta passar os dados! 
-Por padrão basta passar os dados por array para poder fazer o download do arquivo. O array deve ser bidimensional como o exemplo abaixo:
-<br><br>
-$cars = array(<br>
-    array("Volvo",22,18),<br>
-    array("BMW",15,13),<br>
-    array("Saab",5,2),<br>
-    array("Land Rover",17,15)<br>
-);<br>
+
+<p>Classe escrita em PHP que fornece a possibilidade de escrever arquivos de planilha CSV de uma forma muito simples e rápida.
+Basta passar os dados por um array bidimensional para poder fazer o download do arquivo.</p>
+
 
 <h3>Característica da classe</h3>
+<ul>
+	<li>De fácil implementação</li>
+	<li>Curva baixa de aprendizado</li>
+	<li>Código enxuto</li>
+	<li>Defina as propriedades de escrita como nome do arquivo, header, output e delimitador dos dados.</li>
+	<li>Classe orientada a objeto</li>
+	<li>De fácil implementação</li>
+</ul>
 
-De fácil implementação
-Curva baixa de aprendizado
-Código enxuto
-Defina as propriedades de escrita como nome do arquivo, header, output e delimitador dos dados.
-Requisitos
-Versão PHP 5.2.0 ou superior
+
+
+
+<h3>Requisitos</h3>
+<p>Versão PHP 5.2.0 ou superior</p>
 
 <h3>Baixar do repositório</h3>
+<p>$ git clone https://github.com/EvertonHilario/csv-hilario.git</p>
+<h3>Exemplo Básico para realizar download de um CSV<h3>
+'''php
+<?php
+//dados com o conteúdo do arquivo
+$data = [
+	['teste1', 'teste2', 'teste3'],
+	['teste4', 'teste5', 'teste6']
+];
 
-$ git clone https://github.com/EvertonHilario/csv-hilario.git<br>
-Exemplo Básico para realizar download de um CSV<br>
-<?php<br>
-require "ExportCsv.php";<br>
-$mail = new ExportCsv;<br>
-<br><br>
-$data = array(<br>
-    array("Volvo","green",17),<br>
-    array("BMW","yelow",13),<br>
-    array("Saab","blue",07),<br>
-    array("Land Rover","red",15)<br>
-);<br><br>
+//dados do topo da planilha, títulos das colunas
+$header = ['a', 'b', 'c'];
 
-$header = array("nome", "cor", "ano");<br>
-$filename = "test-file";<br>
-$csv->exportCsv($data, $header, $filename);
+require "./src/ExportCsv.php";
+$csv = new ExportCsv;
+
+$csv->setData($data);
+$csv->setHeader($header);
+$csv->setDelimiter(';');
+$csv->setFileName('gremio-file');
+$csv->setOutput('D');
+$csv->export();
+'''
