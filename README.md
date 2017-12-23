@@ -24,7 +24,7 @@ Basta passar os dados por um array bidimensional para poder fazer o download do 
 <h3>Baixar do repositório</h3>
 <p>$ git clone https://github.com/EvertonHilario/csv-hilario.git</p>
 <h3>Exemplo Básico para realizar download de um CSV</h3>
-'''php
+<pre>
 <?php
 //dados com o conteúdo do arquivo
 $data = [
@@ -44,4 +44,4 @@ $csv->setDelimiter(';');
 $csv->setFileName('gremio-file');
 $csv->setOutput('D');
 $csv->export();
-'''
+</pre>
