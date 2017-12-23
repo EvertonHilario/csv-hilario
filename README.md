@@ -15,14 +15,12 @@ Basta passar os dados por um array bidimensional para poder fazer o download do 
 	<li>De fácil implementação</li>
 </ul>
 
-
-
-
 <h3>Requisitos</h3>
 <p>Versão PHP 5.2.0 ou superior</p>
 
 <h3>Baixar do repositório</h3>
 <p>$ git clone https://github.com/EvertonHilario/csv-hilario.git</p>
+
 <h3>Exemplo Básico para realizar download de um CSV</h3>
 <pre>
 //dados com o conteúdo do arquivo
@@ -39,8 +37,30 @@ $csv = new ExportCsv;
 
 $csv->setData($data);
 $csv->setHeader($header);
-$csv->setDelimiter(';');
-$csv->setFileName('gremio-file');
-$csv->setOutput('D');
+$csv->setDelimiter(";");
+$csv->setFileName("gremio-file");
+$csv->setOutput("D");
+$csv->export();
+</pre>
+
+<h3>Exemplo Básico para salvar arquivo CSV em diretório específico</h3>
+<pre>
+//dados com o conteúdo do arquivo
+$data = [
+	['teste1', 'teste2', 'teste3'],
+	['teste4', 'teste5', 'teste6']
+];
+
+//dados do topo da planilha, títulos das colunas
+$header = ['a', 'b', 'c'];
+
+require "./src/ExportCsv.php";
+$csv = new ExportCsv;
+
+$csv->setData($data);
+$csv->setHeader($header);
+$csv->setDelimiter(";");
+$csv->setFileName("gremio-file");
+$csv->setOutput("S", "directory/");
 $csv->export();
 </pre>

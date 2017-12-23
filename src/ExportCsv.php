@@ -15,11 +15,7 @@ class ExportCsv
     * @access private 
     * @var array $data
     */ 
-    private $data = array(
-        array(
-            'sem dados para mostrar'
-        )
-    );
+    private $data = array();
 
     /** 
     * Variável que recebe os dados que alimentaram o header do arquivo, os títulos de cada coluna
@@ -55,6 +51,15 @@ class ExportCsv
     * variável que recebe o destino da saída do arquivo
     * @access private 
     * @var array $content
+    * D = Download
+    * S = Save
+    */ 
+    private $outputType = "D";
+
+    /** 
+    * variável que recebe o destino da saída do arquivo
+    * @access private 
+    * @var array $content
     */ 
     private $output = "php://output";
 
@@ -62,30 +67,18 @@ class ExportCsv
      * @access public
      * @date - 21/12/2017
      * @author Éverton Hilario <everton.hilario@guarida.com.br>
-     * @param array $data (conteúdo do csv)
-     * @param array $header (topo do arquivo csv)
-     * @param string $filename (nome do arquivo, por default nome = arquivo.csv)
-     * @param string $output (saída do arquivo, por default saída = php://output, que força realiza o download)
-     * @param string $delimiter (delimitador dos dados, por default delimitador = ;)
      * @return .csv
     **/
-    public function exportCsv(
-        $data       = array(),
-        $header     = array(),
-        $filename   = "arquivo",
-        $output     = "php://output",
-        $delimiter  = ";"
-    ) {
-
+    public function export() {
         try {
-            $this->setData($data);
-            $this->setHeader($header);
-            $this->setContent();
-            $this->setFileName($filename);
-            $this->setDelimiter($delimiter);
-            $this->setOutput($output);
+            if (!$this->data) {
+                throw new Exception('Ops! Não há dados para gerar a planilha .csv.');
+            }
 
-            if ($this->output == "php://output") {
+            $this->headerConfig();
+            $this->contentConfig();
+
+            if ($this->outputType == "D") {
                 //seta os cabeçalhos do arquivo
                 header('Content-Type: application/csv');
                 header('Content-Disposition: attachment; filename="' . $this->filename . '.csv";');
@@ -110,13 +103,16 @@ class ExportCsv
      * @access public
      * @date - 21/12/2017
      * @author Éverton Hilario <everton.hilario@guarida.com.br>
+     * @param string $outputType 
      * @param string $output 
      * @return void
     **/
-    public function setOutput($output)
+    public function setOutput($outputType, $output = '')
     {
-        if ($output != "php://output") {
-            $this->output = $output . '/' . $this->filename . '.csv';
+        $this->outputType  = $outputType;
+
+        if ($outputType == "S") {
+            $this->output = $output . $this->filename . '.csv';
         }
     }    
 
@@ -150,12 +146,12 @@ class ExportCsv
     }    
 
     /** método que seta o conteúdo do arquivo
-     * @access public
+     * @access private
      * @date - 21/12/2017
      * @author Éverton Hilario <everton.hilario@guarida.com.br>
      * @return void
     **/
-    public function setContent()
+    private function contentConfig()
     {
         $this->content = array_merge($this->header, $this->data);
     }  
@@ -174,6 +170,28 @@ class ExportCsv
         }
     }
 
+    /** método que configura o header do arquivo
+     * @access private
+     * @date - 21/12/2017
+     * @author Éverton Hilario <everton.hilario@guarida.com.br>
+     * @return void
+    **/
+    private function headerConfig()
+    {
+        //se existir um header
+        if ($this->header) {
+            //adiciona o header no arquivo
+            $this->header = array($this->header);
+        } else {
+            //percorre os dados 
+            foreach ($this->data[0] as $key => $data_) {
+                //monta um array com os índices
+                $this->header[0][] = $key;
+            }
+        }
+
+    }
+
     /** método que seta o header do arquivo
      * @access public
      * @date - 21/12/2017
@@ -186,14 +204,7 @@ class ExportCsv
         //se existir um header
         if ($header) {
             //adiciona o header no arquivo
-            $this->header = array($header);
-        } else {
-            //percorre os dados 
-            foreach ($this->data[0] as $key => $data_) {
-                //monta um array com os índices
-                $this->header[0][] = $key;
-            }
+            $this->header = $header;
         }
-
     }
 }
