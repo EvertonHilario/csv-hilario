@@ -12,7 +12,6 @@ Basta passar os dados por um array bidimensional para poder fazer o download do 
 	<li>Código enxuto</li>
 	<li>Defina as propriedades de escrita como nome do arquivo, header, output e delimitador dos dados.</li>
 	<li>Classe orientada a objeto</li>
-	<li>De fácil implementação</li>
 </ul>
 
 <h3>Requisitos</h3>
