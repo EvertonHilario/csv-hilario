@@ -3,6 +3,6 @@
     "description": "Classe escrita em PHP que fornece a possibilidade de escrever arquivos de planilha CSV de uma forma muito simples e rápida. Basta passar os dados por um array bidimensional para poder fazer o download do arquivo.",
     "require": {
         "php": ">=5.3.9"
-    },
+    }
 
 }
