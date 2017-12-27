@@ -14,7 +14,7 @@ Basta passar os dados por um array bidimensional para poder fazer o download do 
 </ul>
 
 <h3>Requisitos</h3>
-<p>Versão PHP 5.2.0 ou superior</p>
+<p>Versão PHP 5.4.0 ou superior</p>
 
 <h3>Instalação e Carregamento</h3>
 <p>
