@@ -40,12 +40,15 @@ $csv->export();
 
 <h3>Exemplo para realizar download de um CSV passando alguns parâmetros</h3>
 <pre>
+use CsvHilario\ExportCsv\ExportCsv;
+//dados com o conteúdo do arquivo
 $data = [
 	['teste1', 'teste2', 'teste3'],
 	['teste4', 'teste5', 'teste6']
 ];
+//dados do topo da planilha, títulos das colunas
 $header = ['a', 'b', 'c'];
-require "./src/ExportCsv.php";
+require "../src/ExportCsv.php";
 $csv = new ExportCsv;
 $csv->setData($data);
 $csv->setHeader($header);
