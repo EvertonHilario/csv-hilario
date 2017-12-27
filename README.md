@@ -22,13 +22,11 @@ Basta passar os dados por um array bidimensional para poder fazer o download do 
 
 <h3>Exemplo Básico para realizar download de um CSV</h3>
 <pre>
-//dados com o conteúdo do arquivo
 $data = [
 	['teste1', 'teste2', 'teste3'],
 	['teste4', 'teste5', 'teste6']
 ];
 
-//dados do topo da planilha, títulos das colunas
 $header = ['a', 'b', 'c'];
 
 require "./src/ExportCsv.php";
@@ -44,13 +42,11 @@ $csv->export();
 
 <h3>Exemplo Básico para salvar arquivo CSV em diretório específico</h3>
 <pre>
-//dados com o conteúdo do arquivo
 $data = [
 	['teste1', 'teste2', 'teste3'],
 	['teste4', 'teste5', 'teste6']
 ];
 
-//dados do topo da planilha, títulos das colunas
 $header = ['a', 'b', 'c'];
 
 require "./src/ExportCsv.php";
