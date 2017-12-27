@@ -26,12 +26,9 @@ $data = [
 	['teste1', 'teste2', 'teste3'],
 	['teste4', 'teste5', 'teste6']
 ];
-
 $header = ['a', 'b', 'c'];
-
 require "./src/ExportCsv.php";
 $csv = new ExportCsv;
-
 $csv->setData($data);
 $csv->setHeader($header);
 $csv->setDelimiter(";");
@@ -46,12 +43,9 @@ $data = [
 	['teste1', 'teste2', 'teste3'],
 	['teste4', 'teste5', 'teste6']
 ];
-
 $header = ['a', 'b', 'c'];
-
 require "./src/ExportCsv.php";
 $csv = new ExportCsv;
-
 $csv->setData($data);
 $csv->setHeader($header);
 $csv->setDelimiter(";");
