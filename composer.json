@@ -9,7 +9,7 @@
         "psr-4": {
             "ExportCsv\\ExportCsv\\": "src/"
         }
-    },
+    }
 
 
 }
