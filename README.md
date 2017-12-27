@@ -20,7 +20,7 @@ Basta passar os dados por um array bidimensional para poder fazer o download do 
 <p>
 O csv-hilario está disponível no Packagist e a instalação via compositor é a maneira recomendada de instalar. Basta adicionar esta linha ao seu composer.json:
 </p>
-<pre>"everton-hilario/csv-hilario": "~1.0"</pre>
+<pre>"everton-hilario/csv-hilario": "~1.*"</pre>
 <p>ou executar</p>
 <pre>$ composer require everton-hilario/csv-hilario</pre>
 
