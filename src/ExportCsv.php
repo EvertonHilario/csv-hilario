@@ -15,7 +15,7 @@ class ExportCsv
     * @access private 
     * @var array $data
     */ 
-    private $data = array();
+    private $data = [];
 
     /** 
     * Variável que recebe os dados que alimentaram o header do arquivo, os títulos de cada coluna
@@ -23,7 +23,7 @@ class ExportCsv
     * @access private 
     * @var array $header
     */ 
-    private $header = array();
+    private $header = [];
 
     /** 
     * Variável que recebe o nome do arquivo
@@ -45,7 +45,7 @@ class ExportCsv
     * @access private 
     * @var array $content
     */ 
-    private $content = array();
+    private $content = [];
 
     /** 
     * variável que recebe o tipo da saída do arquivo
@@ -181,7 +181,7 @@ class ExportCsv
         //se existir um header
         if ($this->header) {
             //adiciona o header no arquivo
-            $this->header = array($this->header);
+            $this->header = [$this->header];
         } else {
             //percorre os dados 
             foreach ($this->data[0] as $key => $data_) {
