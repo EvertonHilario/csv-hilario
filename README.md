@@ -1,54 +1,50 @@
 # csv-hilario
-<h3>Sobre</h3>
 
-<p>Classe escrita em PHP que fornece a possibilidade de escrever arquivos de planilha CSV de uma forma muito simples e rápida.
-Basta passar os dados por um array bidimensional para poder fazer o download do arquivo.</p>
+Classe escrita em PHP que fornece a possibilidade de escrever arquivos de planilha CSV de uma forma muito simples e rápida.
+Basta passar os dados por um array bidimensional para poder fazer o download do arquivo.
+### Característica da classe
+- De fácil implementação
+- Curva baixa de aprendizado
+- Código enxuto
+- Defina as propriedades de escrita como nome do arquivo, header, output e delimitador dos dados.
+- Classe orientada a objeto
 
-<h3>Característica da classe</h3>
-<ul>
-	<li>De fácil implementação</li>
-	<li>Curva baixa de aprendizado</li>
-	<li>Código enxuto</li>
-	<li>Defina as propriedades de escrita como nome do arquivo, header, output e delimitador dos dados.</li>
-	<li>Classe orientada a objeto</li>
-</ul>
+### Requisitos
 
-<h3>Requisitos</h3>
-<p>Versão PHP 5.4.0 ou superior</p>
+Versão PHP 5.4.0 ou superior
 
-<h3>Instalação e Carregamento</h3>
-<p>
-O csv-hilario está disponível no Packagist e a instalação via compositor é a maneira recomendada de instalar. Basta adicionar esta linha ao seu composer.json:
-</p>
-<pre>"everton-hilario/csv-hilario": "1.*"</pre>
-<p>ou executar</p>
-<pre>$ composer require everton-hilario/csv-hilario</pre>
+### Instalação e Carregamento
 
-<h3>Exemplo básico</h3>
-<pre>
+O csv-hilario está disponível no Packagist e a instalação via compositor é a maneira recomendada de instalar. Basta adicionar esta linha ao seu composer.json
+```sh
+"everton-hilario/csv-hilario": "1.*"
+```
+ou executar
+```sh
+$ composer require everton-hilario/csv-hilario
+```
+### Exemplo básico
+```php
 use CsvHilario\ExportCsv\ExportCsv;
 //dados com o conteúdo do arquivo
 $data = [
-	['teste1', 'teste2', 'teste3'],
-	['teste4', 'teste5', 'teste6']
+	["a"=>"teste1", "b"=>"teste2", "c"=>"teste3"],
+	["a"=>"teste4", "b"=>"teste5", "c"=>"teste6"]
 ];
-require "../src/ExportCsv.php";
 $csv = new ExportCsv;
 $csv->setData($data);
 $csv->export();
-</pre>
-
-<h3>Exemplo para realizar download de um CSV passando alguns parâmetros</h3>
-<pre>
+```
+### Exemplo para realizar download de um CSV passando alguns parâmetros
+```php
 use CsvHilario\ExportCsv\ExportCsv;
 //dados com o conteúdo do arquivo
 $data = [
-	['teste1', 'teste2', 'teste3'],
-	['teste4', 'teste5', 'teste6']
+	["teste1", "teste2", "teste3"],
+	["teste4", "teste5", "teste6"]
 ];
 //dados do topo da planilha, títulos das colunas
-$header = ['a', 'b', 'c'];
-require "../src/ExportCsv.php";
+$header = ["a", "b", "c"];
 $csv = new ExportCsv;
 $csv->setData($data);
 $csv->setHeader($header);
@@ -56,19 +52,17 @@ $csv->setDelimiter(";");
 $csv->setFileName("gremio-file");
 $csv->setOutput("D");
 $csv->export();
-</pre>
-
-<h3>Exemplo Básico para salvar arquivo CSV em diretório específico</h3>
-<pre>
+```
+### Exemplo Básico para salvar arquivo CSV em diretório específico
+```php
 use CsvHilario\ExportCsv\ExportCsv;
 //dados com o conteúdo do arquivo
 $data = [
-	['teste1', 'teste2', 'teste3'],
-	['teste4', 'teste5', 'teste6']
+	["teste1", "teste2", "teste3"],
+	["teste4", "teste5", "teste6"]
 ];
 //dados do topo da planilha, títulos das colunas
-$header = ['a', 'b', 'c'];
-require "../src/ExportCsv.php";
+$header = ["a", "b", "c"];
 $csv = new ExportCsv;
 $csv->setData($data);
 $csv->setHeader($header);
@@ -76,4 +70,4 @@ $csv->setDelimiter(";");
 $csv->setFileName("gremio-file");
 $csv->setOutput("S", "directory/");
 $csv->export();
-</pre>
+```
