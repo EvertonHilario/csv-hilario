@@ -9,4 +9,4 @@ php:
 
 script:
   - composer update --no-progress --no-suggest --ansi
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --configuration=phpunit.xml.dist
