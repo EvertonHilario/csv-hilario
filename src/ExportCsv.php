@@ -9,6 +9,7 @@ namespace CsvHilario\ExportCsv;
 * @copyright GPL © 2007. 
 * @access public 
 */
+use Exception;
 
 class ExportCsv
 {
@@ -71,28 +72,18 @@ class ExportCsv
      * @return .csv
      */
     public function export() {
-        try {
-            if (!$this->data) {
-                throw new Exception('Ops! Não há dados para gerar a planilha .csv.');
-            }
+        $this->headerConfig();
+        $this->contentConfig();
 
-            $this->headerConfig();
-            $this->contentConfig();
+        if ($this->outputType == "D") {
+            header('Content-Type: application/csv');
+            header('Content-Disposition: attachment; filename="' . $this->filename . '.csv";');
+        }
 
-            if ($this->outputType == "D") {
-                header('Content-Type: application/csv');
-                header('Content-Disposition: attachment; filename="' . $this->filename . '.csv";');
-            }
+        $file = fopen($this->output, 'w');
 
-            $f = fopen($this->output, 'w');
-
-            foreach ($this->content as $line) {
-                fputcsv($f, $line, $this->delimiter);
-            }
-
-            exit;
-        } catch (Exception $e) {
-            echo $e->getMessage();
+        foreach ($this->content as $line) {
+            fputcsv($file, $line, $this->delimiter);
         }
     }
 
@@ -105,10 +96,33 @@ class ExportCsv
      */
     public function setOutput($outputType, $output = '')
     {
+        $this->outputValidate($outputType, $output);
+
         $this->outputType  = $outputType;
 
         if ($outputType == "S") {
             $this->output = $output . $this->filename . '.csv';
+        }
+    }
+
+    /**
+     * método que valida o outputType
+     * @access public
+     * @param array $outputType
+     * @return exception
+     */
+    public function outputValidate($outputType)
+    {
+        if (!$outputType) {
+            throw new Exception(
+                'Ops! Você deve informar o tipo de saída do .csv, "S" para salvar ou "D" para Download.'
+            );
+        }
+
+        if ($outputType != "D" && $outputType != "S") {
+            throw new Exception(
+                'Ops! Você tem duas opções de saída do .csv, "S" para salvar ou "D" para Download.'
+            );
         }
     }
 
@@ -120,8 +134,23 @@ class ExportCsv
      */
     public function setDelimiter($delimiter)
     {
+        $this->delimiterValidate($delimiter);
+
         if ($delimiter) {
             $this->delimiter = $delimiter;
+        }
+    }
+
+    /**
+     * método que valida o delimiter
+     * @access public
+     * @param array $delimiter
+     * @return exception
+     */
+    public function delimiterValidate($delimiter)
+    {
+        if (!$delimiter) {
+            throw new Exception('Ops! Você deve informar um delimitador para separar as informações.');
         }
     }
 
@@ -156,8 +185,27 @@ class ExportCsv
      */
     public function setData($data)
     {
+        $this->dataValidate($data);
+
         if ($data) {
             $this->data = $data;
+        }
+    }
+
+    /**
+     * método que valida o data
+     * @access public
+     * @param array $data
+     * @return exception
+     */
+    public function dataValidate($data)
+    {
+        if (!$data) {
+            throw new Exception('Ops! Não há dados para gerar o arquivo .csv.');
+        }
+
+        if (!is_array($data)) {
+            throw new Exception('Ops! Você deve passar como parâmetro uma matriz (array)!');
         }
     }
 
@@ -185,8 +233,27 @@ class ExportCsv
      */
     public function setHeader($header)
     {
+        $this->headerValidate($header);
+
         if ($header) {
             $this->header = $header;
+        }
+    }
+
+    /**
+     * método que valida o header
+     * @access public
+     * @param array $header
+     * @return exception
+     */
+    private function headerValidate($header)
+    {
+        if (!$header) {
+            throw new Exception('Ops! Não há dados para gerar o header.');
+        }
+
+        if (!is_array($header)) {
+            throw new Exception('Ops! Você deve passar como parâmetro uma matriz (array)!');
         }
     }
 }
