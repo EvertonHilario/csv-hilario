@@ -11,7 +11,7 @@ class Header
      * @param array $header
      * @return exception
      */
-    public function validate($header)
+    public static function validate($header)
     {
         if (!$header) {
             throw new Exception('Ops! Não há dados para gerar o header.');

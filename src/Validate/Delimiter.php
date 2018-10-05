@@ -11,7 +11,7 @@ class Delimiter
      * @param array $delimiter
      * @return exception
      */
-    public function validate($delimiter)
+    public static function validate($delimiter)
     {
         if (!$delimiter) {
             throw new Exception('Ops! Você deve informar um delimitador para separar as informações.');

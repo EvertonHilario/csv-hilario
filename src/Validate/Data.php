@@ -11,7 +11,7 @@ class Data
      * @param array $data
      * @return exception
      */
-    public function validate($data)
+    public static function validate($data)
     {
         if (!$data) {
             throw new Exception('Ops! Não há dados para gerar o arquivo .csv.');

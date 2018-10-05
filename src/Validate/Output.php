@@ -11,7 +11,7 @@ class Output
      * @param array $outputType
      * @return exception
      */
-    public function validate($outputType)
+    public static function validate($outputType)
     {
         if (!$outputType) {
             throw new Exception(
